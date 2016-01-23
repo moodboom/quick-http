@@ -1,7 +1,5 @@
 # quick-http
-An http[s] client and server app skeleton in modern C++ focused on easy creation of RESTful and websockets APIs, and high performance through a delayed-write model used to serve dynamic html completely from memory.
-
-This project uses code or inspiration from boost ASIO, twitter bootstrap and oath, eidheim/Simple-Web-Server, etc.
+An http[s] client and server app skeleton in modern C++ focused on easy management of RESTful and websockets APIs, and high performance through a delayed-write model used to serve dynamic html completely from memory.
 
 I have used this project as a starting point for several others.  It captures patterns and best practices that have worked well for me in production.  These include:
 
@@ -13,6 +11,15 @@ I have used this project as a starting point for several others.  It captures pa
 * ability to do all object management in memory, including generation of primary key without hitting database
 * in-memory base model storage layer; derived sqlite model storage layer implementation, with delayed write of dirty objects during idle time
 * preloading of all static html assets into memory, including javascript and css
+
+This project provides an example starting point for you to adjust and create your own API server.
+To start:
+
+* get the moodboom/Reusable project, it provides the base classes for this project
+* search and replace all instances of my_quick_http_app with your application name - do a case-insensitive search with and without separators
+* for autotools building, in nix/copy_from/Makefile_src.am, adjust the relative path to Reusable in nix/copy_from/Makefile_src.am
+* replace MyApplicationModel.* with your model
+* replace the RESTful API specification and handlers in ServerHandler.cpp
 
 The base RESTful classes do the heavy lifting, so your derived class just provides the static headers, API format, and call handlers.  Example:
 ```
@@ -67,3 +74,5 @@ bool APIGetLog::handle_call(reply& rep)
 ```
 
 The project depends on the code in another project that holds a large amount of reusable code that has been built up over years.  There is room for cleanup and improvement of style, etc. in the codebase - for example there is both snake_case and camelCase.  But the code itself is clean and the functionality has been tested in several projects.
+
+This project uses code or inspiration from boost ASIO, twitter bootstrap and oath, eidheim/Simple-Web-Server, etc.
