@@ -1,6 +1,8 @@
 # quick-http
 An http[s] client and server app skeleton in modern C++ focused on easy creation of RESTful and websockets APIs, and high performance through a delayed-write model used to serve dynamic html completely from memory.
 
+This project uses code or inspiration from boost ASIO, twitter bootstrap and oath, eidheim/Simple-Web-Server, etc.
+
 I have used this project as a starting point for several others.  It captures patterns and best practices that have worked well for me in production.  These include:
 
 * Model View Controller pattern
