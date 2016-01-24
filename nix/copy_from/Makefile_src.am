@@ -1,0 +1,48 @@
+# MDM "conflicts"?
+#ACLOCAL_AMFLAGS = -I m4
+
+# MDM Adjust as needed
+# MDM Adding sqlite to path so we can drop in sqlite and SQLiteCpp code without changing it.
+# SQLiteCpp uses #include <sqlite3.h", #include <SQLiteCpp/Blah.h> and including sqlite covers them both.
+AM_CPPFLAGS = -I../../../../Reusable/c++ -I../../../../Reusable/c++/sqlite
+VPATH=../../src:../../../../Reusable/c++:../../../../Reusable/c++/sqlite
+
+# MDM link in needed boost components
+# MDM adding [-ldl] for sqlite
+# TODO SWITCH TO CMAKE.  :-)
+# MDM See bootstrap.sh, which sets LDFLAGS from variables defined in .bashrc.
+# MDM system boost used to work fine on gentoo - now we ALWAYS USE CUSTOM BUILDS so do NOT use the system stuff!
+my_quick_http_app_LDADD = $(LDFLAGS) -lpthread -lboost_system -lssl -lboost_thread -lboost_date_time -lboost_filesystem -lcrypto -ldl
+
+# MDM Adjusting http files as we merge v1 and v2...
+bin_PROGRAMS = my_quick_http_app
+my_quick_http_app_SOURCES = \
+\
+/* Application */ \
+APIRequestCache.cpp \
+Controller.cpp \
+MyQuickHttpApp.cpp \
+ServerHandler.cpp \
+UserInterface.cpp \
+MemoryModel.cpp \
+MyApplicationModel.cpp \
+SqliteLocalModel.cpp \
+\
+/* Reusable */ \
+utilities.cpp \
+RandomHelpers.cpp \
+base64.cpp \
+crypto/sha256/sha256.cpp \
+http/quick_http_components/mime_types.cpp \
+http/quick_http_components/reply.cpp \
+http/quick_http_components/request_parser.cpp \
+miniz.c \
+oauth/HMAC_SHA1.cpp \
+oauth/oauthlib.cpp \
+oauth/SHA1.cpp \
+oauth/urlencode.cpp \
+sqlite/sqlite3.c \
+sqlite/SQLiteCpp/Column.cpp \
+sqlite/SQLiteCpp/Database.cpp \
+sqlite/SQLiteCpp/Statement.cpp \
+sqlite/SQLiteCpp/Transaction.cpp
