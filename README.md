@@ -70,16 +70,16 @@ To start:
 * get the [moodboom/Reusable] project, it provides the base classes for this project
 * search and replace all instances of my_quick_http_app with your application name - do a case-insensitive search with and without separators
 * replace the example Car and Tire classes with your model:
-** update MyApplicationModel.* with classes representing your model
-** replace the RESTful API specification and handlers in ServerHandler.cpp
+* * update MyApplicationModel.* with classes representing your model
+* * replace the RESTful API specification and handlers in ServerHandler.cpp
 
 To build:
 * for Visual Studio, CMake, or any other sane build tool, create a simple C++ project and add the modules listed in nix/copy_from/Makefile_src.am
 * for autotools building:
-** in nix/copy_from/Makefile_src.am, adjust the relative path to Reusable in nix/copy_from/Makefile_src.am
-** set ENV vars as described in nix/bootstrap.sh; cd nix; ./bootstrap.sh force release debug
+* * in nix/copy_from/Makefile_src.am, adjust the relative path to Reusable in nix/copy_from/Makefile_src.am
+* * set ENV vars as described in nix/bootstrap.sh; cd nix; ./bootstrap.sh force release debug
 * for Eclipse:
-** There are project files in the repo, but braindead Eclipse doesn't put all project settings into project settings files.  The provided ones should be a good start, though.
+* * There are project files in the repo, but braindead Eclipse doesn't put all project settings into project settings files.  The provided ones should be a good start, though.
 
 The project depends on the code in another project [moodboom/Reusable] that holds a large amount of reusable code that has been built up over years.  There is room for cleanup and improvement of style, etc. in the codebase - for example there is both snake_case and camelCase.  But the code itself is clean and the functionality has been tested in several projects.
 
