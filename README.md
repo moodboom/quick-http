@@ -70,8 +70,8 @@ To start:
 * get the [moodboom/Reusable] project, it provides the base classes for this project
 * search and replace all instances of my_quick_http_app with your application name - do a case-insensitive search with and without separators
 * replace the example Car and Tire classes with your model:
-* * update MyApplicationModel.* with classes representing your model
-* * replace the RESTful API specification and handlers in ServerHandler.cpp
+  * update MyApplicationModel.* with classes representing your model
+  * replace the RESTful API specification and handlers in ServerHandler.cpp
 
 To build:
 * for Visual Studio, CMake, or any other sane build tool, create a simple C++ project and add the modules listed in nix/copy_from/Makefile_src.am
