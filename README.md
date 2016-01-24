@@ -40,7 +40,7 @@ const vector<API_call*> c_vpAPI =
     new APIGetUser        ( "GET"   , {"v1","users",":id"             }, {"html","json"} ),
 };
 
-at_server_handler::at_server_handler()
+server_handler::server_handler()
 :
     // call base class
     inherited(
