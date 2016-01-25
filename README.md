@@ -5,12 +5,16 @@ I have used this project as a starting point for several others.  It's not compl
 
 * Model View Controller pattern
 * event-driven primary message loop with async multithreaded support (based on boost ASIO)
-* hashmaps (unordered sets of pointers) used for all major object collections
-* use of an auto-incremented id as the primary key for all objects
-* support for secondary hash sorting on any desired object fields
-* ability to do all object management in memory, including generation of primary key without hitting database
-* in-memory base model storage layer; derived sqlite model storage layer implementation, with delayed write of dirty objects during idle time
-* preloading of all static html assets into memory, including javascript and css
+* efficient memory model
+  * hashmaps (unordered sets of pointers) used for all major object collections
+  * support for secondary hash sorting on any desired object fields
+  * use of an auto-incremented id as the primary key for all objects
+  * ability to do all object management in memory, including generation of new unique ids without hitting database
+  * in-memory base model storage layer; derived sqlite model storage layer implementation, with delayed write of dirty objects during idle time
+* one html codebase
+  * html files are directly browseable and editable from the file system, for instantaneous web development 
+  * html files are fully preloaded into memory on startup, including injection of javascript and css
+  * during runtime, dynamic data can be injected into preloaded html, for delivery from memory of full html pages in one round trip
 
 The base RESTful classes do the heavy lifting, so your derived class just provides the static headers, API format, and call handlers.  Example:
 ```
