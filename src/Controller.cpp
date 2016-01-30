@@ -12,10 +12,8 @@ using namespace std;
 // ------------------------------------------------------------------------------
 // CONSTANTS GLOBALS STATICS
 // ------------------------------------------------------------------------------
-
 const vector<string> c_includes =
 {
-    "favicon.ico",
     "bootstrap/css/bootstrap.min.css",
     "bootstrap/assets/css/ie10-viewport-bug-workaround.css",
     "css/grid.css",
@@ -27,19 +25,6 @@ const vector<string> c_includes =
     "js/bootstrap-switch.min.js",
     "bootstrap/assets/js/ie10-viewport-bug-workaround.js"
 };
-
-/*
-const vector<API_call*> c_vpAPI =
-{
-    new APIGetLog         ( "GET"   , {"v1","log"                                           }, {"html","json"} ),
-    new APIGetUsers       ( "GET"   , {"v1","users"                                         }, {"html","json"} ),    // ADMIN
-    new APIGetUser        ( "GET"   , {"v1","users",":id"                                   }, {"html","json"} ),
-};
-*/
-
-// ------------------------------------------------------------------------------
-
-
 const html_wrappers_for_docs c_wrappers(
     "<button>",
     "</button>",
@@ -49,12 +34,6 @@ const html_wrappers_for_docs c_wrappers(
     "</button>",
     "<br />"
 );
-/*
-c_includes,
-c_vpAPI,
-1000000         // Allow max of 1MB requests for now
-*/
-
 // ------------------------------------------------------------------------------
 
 

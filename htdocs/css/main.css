@@ -1,0 +1,90 @@
+html, body {
+  height: 80%;
+}
+body {
+  height: 80%;
+}
+
+body {
+  <!-- min-height: 20px; -->
+  <!-- padding-top: 2px; -->
+}
+
+.container
+{
+    width: 96%;
+}
+
+.myi
+{
+  max-height: 100%;
+}
+
+.iframe1 iframe, .iframe2 iframe, .iframe3 iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.btn {
+  margin: 0em .4em .6em 0em;
+}
+
+.btn-moneygreen {
+  background-color: hsl(113, 30%, 24%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#5e9f55", endColorstr="#2f4f2a");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#5e9f55), to(#2f4f2a));
+  background-image: -moz-linear-gradient(top, #5e9f55, #2f4f2a);
+  background-image: -ms-linear-gradient(top, #5e9f55, #2f4f2a);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5e9f55), color-stop(100%, #2f4f2a));
+  background-image: -webkit-linear-gradient(top, #5e9f55, #2f4f2a);
+  background-image: -o-linear-gradient(top, #5e9f55, #2f4f2a);
+  background-image: linear-gradient(#5e9f55, #2f4f2a);
+  border-color: #2f4f2a #2f4f2a hsl(113, 30%, 18%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.39);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-schoolbusyellow {
+  background-color: hsl(36, 82%, 49%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8dfb9", endColorstr="#e39116");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#f8dfb9), to(#e39116));
+  background-image: -moz-linear-gradient(top, #f8dfb9, #e39116);
+  background-image: -ms-linear-gradient(top, #f8dfb9, #e39116);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f8dfb9), color-stop(100%, #e39116));
+  background-image: -webkit-linear-gradient(top, #f8dfb9, #e39116);
+  background-image: -o-linear-gradient(top, #f8dfb9, #e39116);
+  background-image: linear-gradient(#f8dfb9, #e39116);
+  border-color: #e39116 #e39116 hsl(36, 82%, 40%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.59);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-slategrey {
+  background-color: hsl(0, 0%, 65%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dddddd", endColorstr="#a5a5a5");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#dddddd), to(#a5a5a5));
+  background-image: -moz-linear-gradient(top, #dddddd, #a5a5a5);
+  background-image: -ms-linear-gradient(top, #dddddd, #a5a5a5);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dddddd), color-stop(100%, #a5a5a5));
+  background-image: -webkit-linear-gradient(top, #dddddd, #a5a5a5);
+  background-image: -o-linear-gradient(top, #dddddd, #a5a5a5);
+  background-image: linear-gradient(#dddddd, #a5a5a5);
+  border-color: #a5a5a5 #a5a5a5 hsl(0, 0%, 59.5%);
+  color: #333 !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.36);
+  -webkit-font-smoothing: antialiased;
+}
+
+<!-- custom bootstrap 3 button css generated here charliepark.org/bootstrap_buttons/ -->
+<!-- 113 30 36 12 -->
+<!-- 36 82 67 18 -->
+<!-- 0 0 76 11 -->

@@ -235,7 +235,7 @@ bool SqliteLocalModel::create_new_db()
     {
         SQLite::Database& db = *pdb_;
         g_ss.str(std::string());
-        g_ss << "Creating new sqlite database [v" << c_nDatabaseVersion << "]";
+        g_ss << "Creating new sqlite database \"" << s_str_db_name << "\" [v" << c_nDatabaseVersion << "]";
         log(LV_INFO,g_ss.str());
 
         nb = db.exec(getCreateSQL(c_str_Tablename_PrefInt               ,cv_cols_PrefInt                ));

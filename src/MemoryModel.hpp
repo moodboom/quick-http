@@ -94,7 +94,7 @@ static const std::vector<StringPref> init_str_pref_config()
 static const std::vector<StringPref> s_str_pref_config = init_str_pref_config();
 static const std::vector<IntPref> init_int_pref_config()
 {
-    assert( IP_COUNT == 11 );
+    assert( IP_COUNT == 7 );
     std::vector<IntPref> v;
     v.push_back(IntPref( IP_DB_VERSION                        , "DatabaseVersion"                 , 1         ));     // The upgrade process should keep this synced with Version.h
     v.push_back(IntPref( IP_PROFILING_LEVEL                   , "ProfilingLevel"                  , 0         ));     // Set to turn on different levels of profiling output

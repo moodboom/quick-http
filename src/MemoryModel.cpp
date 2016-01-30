@@ -92,15 +92,13 @@ bool MemoryModel::initialize(bool bTest)
 
             log(LV_ALWAYS,"");
             log(LV_ALWAYS,
-                "********************** NOTE **********************                             \n"
-                "A new database has been created.                                               \n"
-                "You should configure it with basic startup data, then restart.                 \n"
-                "See the database for details.                                                  \n"
-                "                                                                               \n"
-                " SETTING UP A NEW DATABASE                                                     \n"
-                " =========================                                                     \n"
-                "    TODO                                                                       \n"
-                "********************** NOTE **********************                             \n"
+                "********************** NOTE **********************            \n"
+                "A new database has been created.                              \n"
+                "You should configure it with basic startup data, then restart.\n"
+                "Open up the database and examine the preloaded fields.        \n"
+                "Update them as needed.                                        \n"
+                "TODO: add app-specific instructions here                      \n"
+                "********************** NOTE **********************            \n"
             );
             log(LV_ALWAYS,"");
 
