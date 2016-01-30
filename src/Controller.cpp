@@ -26,12 +26,12 @@ const vector<string> c_includes =
     "bootstrap/assets/js/ie10-viewport-bug-workaround.js"
 };
 const html_wrappers_for_docs c_wrappers(
-    "<button>",
-    "</button>",
-    "<button>",
-    "</button>",
-    "<button>",
-    "</button>",
+    "<a href=\"/\" role=\"button\" class=\"btn btn-moneygreen\">",
+    "</a>",
+    "<a href=\"/\" role=\"button\" class=\"btn btn-slategray\">",
+    "</a>",
+    "<a href=\"/\" role=\"button\" class=\"btn btn-schoolbusyellow\">",
+    "</a>",
     "<br />"
 );
 // ------------------------------------------------------------------------------
@@ -309,6 +309,8 @@ void Controller::run_analysis()
     {
     	// TODO
     }
+
+    sleep(1+get_random_uint32(5));
 
     g_p_local->saveDirtyObjectsAsNeeded();
 

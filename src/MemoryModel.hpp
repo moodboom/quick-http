@@ -100,9 +100,9 @@ static const std::vector<IntPref> init_int_pref_config()
     v.push_back(IntPref( IP_PROFILING_LEVEL                   , "ProfilingLevel"                  , 0         ));     // Set to turn on different levels of profiling output
     v.push_back(IntPref( IP_IGNORE_SSL_ERRORS                 , "IgnoreSSLErrors"                 , 1         ));     // Default to ignore to make it WORK; more security-aware folks can then turn it on
     v.push_back(IntPref( IP_LOGGING_LEVEL                     , "LoggingLevel"                    , LV_DEBUG  ));     // We'll go with DEBUG while under development, reduce later!
-    v.push_back(IntPref( IP_RUN_ANALYSIS_FREQUENCY_MS         , "RunAnalysisFreqMilliseconds"     , 2500      ));     // May turn out to be strategy-dependent; we'll go fast while under dev, revert to >3 seconds in production??  We shall see...
     v.push_back(IntPref( IP_STARTUP_DELAY_MS                  , "StartupDelayMilliseconds"        , 50        ));     // CAREFUL with this one!
     v.push_back(IntPref( IP_MAIN_LOOP_RATE_MS                 , "MainLoopRateMilliseconds"        , 100       ));     // CAREFUL with this one!
+    v.push_back(IntPref( IP_RUN_ANALYSIS_FREQUENCY_MS         , "RunAnalysisFreqMilliseconds"     , 5000      ));     // May turn out to be strategy-dependent; we'll go fast while under dev, revert to >3 seconds in production??  We shall see...
 
     return v;
 }
