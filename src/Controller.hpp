@@ -65,6 +65,8 @@ private:
 
     bool b_test_;
 
+    const vector<API_call*> API_;
+
     boost::asio::deadline_timer timer_;
 
     boost::asio::deadline_timer analysis_timer_;

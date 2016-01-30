@@ -12,6 +12,49 @@ using namespace std;
 // ------------------------------------------------------------------------------
 // CONSTANTS GLOBALS STATICS
 // ------------------------------------------------------------------------------
+
+const vector<string> c_includes =
+{
+    "favicon.ico",
+    "bootstrap/css/bootstrap.min.css",
+    "bootstrap/assets/css/ie10-viewport-bug-workaround.css",
+    "css/grid.css",
+    "css/sticky-footer-navbar.css",
+    "css/main.css",
+    "css/bootstrap-switch.min.css",
+    "bootstrap/assets/js/jquery.min.js",
+    "bootstrap/js/bootstrap.min.js",
+    "js/bootstrap-switch.min.js",
+    "bootstrap/assets/js/ie10-viewport-bug-workaround.js"
+};
+
+/*
+const vector<API_call*> c_vpAPI =
+{
+    new APIGetLog         ( "GET"   , {"v1","log"                                           }, {"html","json"} ),
+    new APIGetUsers       ( "GET"   , {"v1","users"                                         }, {"html","json"} ),    // ADMIN
+    new APIGetUser        ( "GET"   , {"v1","users",":id"                                   }, {"html","json"} ),
+};
+*/
+
+// ------------------------------------------------------------------------------
+
+
+const html_wrappers_for_docs c_wrappers(
+    "<button>",
+    "</button>",
+    "<button>",
+    "</button>",
+    "<button>",
+    "</button>",
+    "<br />"
+);
+/*
+c_includes,
+c_vpAPI,
+1000000         // Allow max of 1MB requests for now
+*/
+
 // ------------------------------------------------------------------------------
 
 
@@ -28,7 +71,27 @@ Controller::Controller(
     b_test_(b_test),
     timer_(io_service_),
     analysis_timer_(io_service_),
-	b_run_analysis_(false)
+	b_run_analysis_(false),
+
+	// =====================================================================================
+	//  API DESIGN GUIDELINES
+	// =====================================================================================
+	// Keep the RESTful design tight!
+	//  https://en.wikipedia.org/wiki/Representational_state_transfer#RESTful_web_services
+	//
+	//                                              GET                 PUT                         POST                                    DELETE              PATCH
+	//      Collection  http://a.com/v1/things/     list                n/a (replace set)           create new element, return URI to it    delete whole set    n/a
+	//      Element     https://a.com/v1/things/3   element n details   create/replace element n    n/a                                     delete element n    change part of element n
+	//
+	// Rule of thumb is 4xx errors indicate the CLIENT did something incorrectly
+	// while 5xx errors indicate the SERVER did something incorrectly.
+	// =====================================================================================
+	API_({
+	    new APIGetLog    ( *this, "GET"   , {"v1","log"                   }, {"html","json"} ),
+	    new APIGetUsers  ( *this, "GET"   , {"v1","users"                 }, {"html","json"} ),    // ADMIN
+	    new APIGetUser   ( *this, "GET"   , {"v1","users",":id"           }, {"html","json"} ),
+	})
+
 {
     g_p_local = &memory_model_;
 }
@@ -127,7 +190,12 @@ void Controller::start_server()
     // log(LV_ALWAYS,"Starting http server...");
 
     // HTTP SERVER
-    server_handler sh(*this);
+    server_handler sh(
+        c_includes,
+        API_,
+        "My Quick Http App",
+        c_wrappers
+    );
     Server<HTTP> s(
 		io_service_,
 		sh,

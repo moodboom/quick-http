@@ -6,27 +6,32 @@
 #include <http/http_helpers.hpp>
 
 
-// -----------------
-// API call handlers
-// -----------------
-class APIGetLog             : public API_call { using API_call::API_call; public: virtual bool handle_call(reply& rep); };
-class APIGetUsers           : public API_call { using API_call::API_call; public: virtual bool handle_call(reply& rep); };
-class APIGetUser            : public API_call { using API_call::API_call; public: virtual bool handle_call(reply& rep); };
-
-
-class server_handler : public base_server_handler
+// Base API call that includes a reference to our controller.
+class MyApiCall : public API_call
 {
-	typedef base_server_handler inherited;
+typedef API_call inherited;
 
 public:
+    MyApiCall(
+        Controller& c,
+        string method,
+        vector<string> path_tokens,
+        vector<string> types,
+        vector<pair<string,string>> pair_tokens = vector<pair<string,string>>(),
+        bool b_param_pairs_are_mandatory = true
+    ) :
+        inherited(method,path_tokens,types,pair_tokens,b_param_pairs_are_mandatory),
+        c_(c)
+    {}
 
-	explicit server_handler(
-		Controller& c
-	);
-
-private:
-
-	Controller& c_;
+protected:
+    Controller& c_;
 };
 
 
+// -----------------
+// API call handlers
+// -----------------
+class APIGetLog             : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(reply& rep); };
+class APIGetUsers           : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(reply& rep); };
+class APIGetUser            : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(reply& rep); };
