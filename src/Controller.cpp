@@ -64,6 +64,10 @@ Controller::Controller(
 	//
 	// Rule of thumb is 4xx errors indicate the CLIENT did something incorrectly
 	// while 5xx errors indicate the SERVER did something incorrectly.
+	// Note that PATCH technically requires "specification of a sequence of operations".  I dunno, that's rather complex.
+	// Better to add an additional GET/PUT path under the parent for each item needing direct change.
+	//  http://williamdurand.fr/2014/02/14/please-do-not-patch-like-an-idiot/
+	//  http://tools.ietf.org/html/rfc6902
 	// =====================================================================================
 	API_({
 	    new APIGetLog    ( *this, "GET"   , {"v1","log"                   }, {"html","json"} ),

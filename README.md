@@ -13,9 +13,10 @@ I have used this project as a starting point for several others.  It's not compl
   * use of an auto-incremented id as the primary key for all objects
   * ability to do all object management in memory, including generation of new unique ids without hitting database
   * in-memory base model storage layer; derived sqlite model storage layer implementation, with delayed write of dirty objects during idle time
-* one html codebase
-  * html files are directly browseable and editable from the file system, for instantaneous web development 
-  * html files are fully preloaded into memory on startup, including injection of javascript and css
+* one html codebase 
+  * html files are directly browseable and editable from the file system, for instantaneous web development
+  * html files include test data that is used when browsing from the file system
+  * html files are fully preloaded into memory on startup, including injection of javascript and css, and removal of test data
   * during runtime, dynamic data can be injected into preloaded html, for delivery from memory of full html pages in one round trip
 
 The base RESTful classes do the heavy lifting, so your derived class just provides the static headers, API format, and call handlers.  Example:
