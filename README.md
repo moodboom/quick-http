@@ -1,25 +1,32 @@
 # quick-http
-An http[s] client and server app skeleton in modern portable C++, focused on easy management of RESTful and websockets APIs, and high performance through a delayed-write model used to serve dynamic html completely from memory.
+
+> An http[s] client and server app skeleton in modern portable C++, 
+> focused on easy management of RESTful and websockets APIs, 
+> and high performance through a delayed-write model used to serve dynamic html completely from memory.
 
 ![Self-documentation example](REST_selfdoc_screenshot.png?raw=true "Self-documentation example")
 
-## Summary (additional notes on the [wiki](https://bitpost.com/wiki/Quick-http))
+### Summary
 
-I have used this project as a starting point for several others.  It's not completely polished yet but well on its way.  It captures patterns and best practices that have worked well for me in production.  These include:
+This skeleton app follows these patterns and best practices:
 
-* Model View Controller pattern
-* event-driven primary message loop with async multithreaded support (based on boost ASIO)
-* efficient memory model
+&nbsp; ✓ model-view-controller pattern
+&nbsp; ✓ event-driven primary message loop with async multithreaded support (based on boost ASIO)
+&nbsp; ✓ efficient memory model
   * hashmaps (unordered sets of pointers) used for all major object collections
   * support for secondary hash sorting on any desired object fields
   * use of an auto-incremented id as the primary key for all objects
   * ability to do all object management in memory, including generation of new unique ids without hitting database
   * in-memory base model storage layer; derived sqlite model storage layer implementation, with delayed write of dirty objects during idle time
-* one html codebase 
+&nbsp; ✓ one html codebase 
   * html files are directly browseable and editable from the file system, for instantaneous web development
   * html files include test data that is used when browsing from the file system
   * html files are fully preloaded into memory on startup, including injection of javascript and css, and removal of test data
   * during runtime, dynamic data can be injected into preloaded html, for delivery from memory of full html pages in one round trip
+
+See the [wiki](https://bitpost.com/wiki/Quick-http)) for performance stats and other information.
+
+### Usage
 
 The base RESTful classes do the heavy lifting, so your derived class just provides the static headers, API format, and call handlers.  Example:
 ```
@@ -73,8 +80,9 @@ bool APIGetLog::handle_call(reply& rep)
 }
 ```
 
-This project provides an example starting point for you to create your own API server.
-To start:
+### Getting started
+
+This project provides an example starting point for you to create your own API server.  To start:
 
 * get the [moodboom/Reusable] project, it provides the base classes for this project
 * search and replace all instances of my_quick_http_app with your application name - do a case-insensitive search with and without separators
@@ -93,3 +101,4 @@ To build:
 The project depends on the code in another project [moodboom/Reusable] that holds a large amount of reusable code that has been built up over years.  There is room for cleanup and improvement of style, etc. in the codebase - for example there is both snake_case and camelCase.  But the code itself is clean and the functionality has been tested in several projects.
 
 This project uses code or inspiration from boost ASIO, twitter bootstrap and oath, eidheim/Simple-Web-Server, SQLiteCPP, etc.
+(additional notes on the [wiki](https://bitpost.com/wiki/Quick-http))
