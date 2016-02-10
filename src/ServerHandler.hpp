@@ -14,7 +14,7 @@ typedef API_call inherited;
 public:
     MyApiCall(
         Controller& c,
-        string method,
+        HTML_METHOD method,
         vector<string> path_tokens,
         vector<string> types,
         vector<pair<string,string>> pair_tokens = vector<pair<string,string>>(),

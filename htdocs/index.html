@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="My Quick Http App is a small working example of the quick-http library.">
+    <meta name="author" content="Michael Behrns-Miller">
     <link rel="icon" href="favicon.ico">
 
-    <title>Title</title>
+    <title>My Quick Http App</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,22 +37,14 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">BITPOST</a>
+          <a class="navbar-brand" href="#">My Quick Http App</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bookmarks<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="https://thedigitalage.org:444/music/hangthedj/index.html">Hang The DJ html5 client</a></li>
                 <li><a href="http://abettersoftware.com/">A better Software, Inc.</a></li>
-                <li><a href="/files">Files</a></li>
               </ul>
             </li>
           </ul>
@@ -65,10 +57,81 @@
 
     <div class="container">
 
-    <h1>Title</h1>
-    
-    <!-- REST API docs go here -->
-    
+<form id="getstock" method="get" action="v1/users/:id.html"><div class="form-inline"><button type="submit" class="btn btn-primary">GET</button><div class="form-group"><label>/</label><label>v1/</label><label>users/</label> <input type="text" name="id" id="id" class="form-control" placeholder="id"/> <label>.html</label></div></div></form>
+
+<form id="getstock" method="get"><div class="form-inline">
+<button type="submit" class="btn btn-primary">GET</button><div class="form-group">
+<label>/</label><label>v1/</label><label>stocks/</label>
+<input type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
+<label>.html</label></div>
+</div>
+</form>
+
+<form name="myform" method="get">
+           <div class="form-inline">
+          <button type="submit" class="btn btn-primary" value="save">GET</button>
+              <div class="form-group">
+                 <label>/v1/accounts/</label>
+                 <input type="text" id="account_id" class="form-control" placeholder="id"/>
+                 <label>/stocks/</label>
+                 <input type="text" id="symbol" class="form-control" placeholder="symbol"/>
+                 <label>.html</label>
+              </div>
+           </div>
+</form>
+
+<form method="GET">
+           <div class="form-inline">
+          <button type="submit" class="btn btn-primary">GET</button>
+              <div class="form-group">
+                 <label>/v1/stocks/</label>
+                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
+                 <label>.html</label>
+              </div>
+           </div>
+</form>
+
+<form>
+           <div class="form-inline">
+          <button type="submit" class="btn btn-success">PATCH</button>
+              <div class="form-group">
+                 <label>/v1/stocks/</label>
+                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
+                 <label>.html</label>
+              </div>
+           </div>
+</form>
+
+<form>
+           <div class="form-inline">
+          <button type="submit" class="btn btn-warning">PUT</button>
+              <div class="form-group">
+                 <label>/v1/stocks/</label>
+                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
+                 <label>.html</label>
+              </div>
+           </div>
+</form>
+
+<form>
+           <div class="form-inline">
+          <button type="submit" class="btn btn-danger">DELETE</button>
+              <div class="form-group">
+                 <label>/v1/stocks/</label>
+                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
+                 <label>.html</label>
+              </div>
+           </div>
+</form>
+
+<input type="checkbox" id="inlineCheckbox1" value="option1"> Display results inline:
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe id="results" class="embed-responsive-item"></iframe>
+</div>
+
+
+<!-- /v1/stocks.html CONTENTS -->
+
     </div> <!-- /container -->
 
 
@@ -89,39 +152,52 @@
     <script src="bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
 
 <script>
-/* use as handler for resize*/
-$(window).resize(adjustLayout).resize();
 
 $( document ).ready(function() {
 
-    /* call function in ready handler*/
-    adjustLayout();
-    /* your other page load code here*/
+  // process the form
+  $('#getstock').submit(function(event) {
 
-      $('#myDisButton').on('click', function (e) {
-          // e.preventDefault();
-          // $(this).button('complete') // button text will be "finished!"
-          $(this).prop("disabled",true);
-      });
-      $('#myStateButton').on('click', function (e) {
-          // $(this).prop("disabled",true);
-          $(this).removeClass('active');
-      });
+	  // get the orig src, it defines the url we will build
+	  var src = event.target.action.split(/[./]/);
+	  var base = event.target.baseURI.split(/[./]/);
+	  var n = 0;
+	  while (src[n] == base[n]) {
+          n++;
+	  }
+	  var url = "";
+	  for (; n < src.length; n++) {
+		  if (src[n][0] == ":") {
+			  url += $('input[name='+src[n].substr(1)+']').val()
+		  } else {
+			  url += src[n];
+		  }
+          if (n < src.length - 2)
+              url += "/";
+          else if (n == src.length - 2)
+			  url += ".";
+	  }
 
-    $('body').on('click', '.btn.active', function(e){
-        e.stopImmediatePropagation();
-        $(this).removeClass('active');
-    })
+	  /*
+      // get the form data
+      // there are many ways to get this data using jQuery (you can use the class or id also)
+      var formData = {
+          'symbol'            : $('input[name=symbol]').val()
+          'email'             : $('input[name=email]').val(),
+          'superheroAlias'    : $('input[name=superheroAlias]').val()
+      };
+      // process the form
+      $('#results').attr('src','v1/stocks/' + formData['symbol'] + '.html');
+	  */
 
-      $("[name='AAPL']").bootstrapSwitch();
-
-      $.fn.bootstrapSwitch.defaults.onColor = 'success';
-      
+      // process the form
+      $('#results').attr('src',url);
+        
+      // stop the form from submitting the normal way and refreshing the page
+      event.preventDefault();
+    
+  });
 });
-
-function adjustLayout(){
-
-}
 
 </script>
 

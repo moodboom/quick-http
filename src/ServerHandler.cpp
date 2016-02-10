@@ -10,12 +10,12 @@ bool APIGetLog::handle_call(reply& rep)
 {
     string rawlog = read_file(g_base_log_filename + ".log");
 
-    if (type_ == "txt")
+    if (!types_.empty() && types_[0] == "txt")
     {
         rep.content = rawlog;
         return true;
 
-    } else if (type_ == "html")
+    } else if (!types_.empty() && types_[0] == "html")
     {
         // Add <br>.
         string log;

@@ -1,6 +1,8 @@
 # quick-http
 An http[s] client and server app skeleton in modern portable C++, focused on easy management of RESTful and websockets APIs, and high performance through a delayed-write model used to serve dynamic html completely from memory.
 
+![Self-documentation example](REST_selfdoc_screenshot.png?raw=true "Self-documentation example")
+
 ## Summary (additional notes on the [wiki](https://bitpost.com/wiki/Quick-http))
 
 I have used this project as a starting point for several others.  It's not completely polished yet but well on its way.  It captures patterns and best practices that have worked well for me in production.  These include:

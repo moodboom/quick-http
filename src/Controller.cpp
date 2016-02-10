@@ -25,15 +25,25 @@ const vector<string> c_includes =
     "js/bootstrap-switch.min.js",
     "bootstrap/assets/js/ie10-viewport-bug-workaround.js"
 };
-const html_wrappers_for_docs c_wrappers(
+const vector<string> c_wrappers =
+{
+    "",
+    "<br />",
     "<a href=\"/\" role=\"button\" class=\"btn btn-moneygreen\">",
     "</a>",
     "<a href=\"/\" role=\"button\" class=\"btn btn-slategray\">",
     "</a>",
     "<a href=\"/\" role=\"button\" class=\"btn btn-schoolbusyellow\">",
     "</a>",
-    "<br />"
-);
+    "<a href=\"/\" role=\"button\" class=\"btn btn-default\">",
+    "</a>",
+    "<a href=\"/\" role=\"button\" class=\"btn btn-warning\">",
+    "</a>",
+    "<a href=\"/\" role=\"button\" class=\"btn btn-success\">",
+    "</a>",
+    "<a href=\"/\" role=\"button\" class=\"btn btn-moneygreen\">",
+    "</a>"
+};
 // ------------------------------------------------------------------------------
 
 
@@ -70,9 +80,9 @@ Controller::Controller(
 	//  http://tools.ietf.org/html/rfc6902
 	// =====================================================================================
 	API_({
-	    new APIGetLog    ( *this, "GET"   , {"v1","log"                   }, {"html","json"} ),
-	    new APIGetUsers  ( *this, "GET"   , {"v1","users"                 }, {"html","json"} ),    // ADMIN
-	    new APIGetUser   ( *this, "GET"   , {"v1","users",":id"           }, {"html","json"} ),
+	    new APIGetLog    ( *this, HM_GET   , {"v1","log"                   }, {"html","json"} ),
+	    new APIGetUsers  ( *this, HM_GET   , {"v1","users"                 }, {"html","json"} ),    // ADMIN
+	    new APIGetUser   ( *this, HM_GET   , {"v1","users",":id"           }, {"html","json"} ),
 	})
 
 {
