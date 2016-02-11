@@ -10,15 +10,17 @@
 
 This skeleton app follows these patterns and best practices:
 
-✓ model-view-controller pattern
-✓ event-driven primary message loop with async multithreaded support (via boost ASIO) 
-✓ efficient memory model 
+✓ model-view-controller pattern  
+✓ event-driven primary message loop with async multithreaded support (via boost ASIO)  
+✓ efficient memory model  
   * hashmaps (unordered sets of pointers) used for all major object collections
   * support for secondary hash sorting on any desired object fields
   * use of an auto-incremented id as the primary key for all objects
   * ability to do all object management in memory, including generation of new unique ids without hitting database
-  * in-memory base model storage layer; derived sqlite model storage layer implementation, with delayed write of dirty objects during idle time
-&nbsp; ✓ one html codebase 
+  * in-memory base model storage layer; derived sqlite model storage layer implementation, with delayed write of dirty objects during idle time  
+
+✓ one html codebase  
+
   * html files are directly browseable and editable from the file system, for instantaneous web development
   * html files include test data that is used when browsing from the file system
   * html files are fully preloaded into memory on startup, including injection of javascript and css, and removal of test data
