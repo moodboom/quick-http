@@ -11,10 +11,8 @@
 This skeleton app follows these patterns and best practices:
 
 ✓ model-view-controller pattern
-
 ✓ event-driven primary message loop with async multithreaded support (via boost ASIO) 
-
-&nbsp; &nbsp; ✓ efficient memory model 
+✓ efficient memory model 
   * hashmaps (unordered sets of pointers) used for all major object collections
   * support for secondary hash sorting on any desired object fields
   * use of an auto-incremented id as the primary key for all objects
