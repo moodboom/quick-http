@@ -57,72 +57,14 @@
 
     <div class="container">
 
-<form id="getstock" method="get" action="v1/users/:id.html"><div class="form-inline"><button type="submit" class="btn btn-primary">GET</button><div class="form-group"><label>/</label><label>v1/</label><label>users/</label> <input type="text" name="id" id="id" class="form-control" placeholder="id"/> <label>.html</label></div></div></form>
-
-<form id="getstock" method="get"><div class="form-inline">
-<button type="submit" class="btn btn-primary">GET</button><div class="form-group">
-<label>/</label><label>v1/</label><label>stocks/</label>
-<input type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
-<label>.html</label></div>
-</div>
-</form>
-
-<form name="myform" method="get">
-           <div class="form-inline">
-          <button type="submit" class="btn btn-primary" value="save">GET</button>
-              <div class="form-group">
-                 <label>/v1/accounts/</label>
-                 <input type="text" id="account_id" class="form-control" placeholder="id"/>
-                 <label>/stocks/</label>
-                 <input type="text" id="symbol" class="form-control" placeholder="symbol"/>
-                 <label>.html</label>
-              </div>
-           </div>
-</form>
-
-<form method="GET">
-           <div class="form-inline">
-          <button type="submit" class="btn btn-primary">GET</button>
-              <div class="form-group">
-                 <label>/v1/stocks/</label>
-                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
-                 <label>.html</label>
-              </div>
-           </div>
-</form>
-
-<form>
-           <div class="form-inline">
-          <button type="submit" class="btn btn-success">PATCH</button>
-              <div class="form-group">
-                 <label>/v1/stocks/</label>
-                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
-                 <label>.html</label>
-              </div>
-           </div>
-</form>
-
-<form>
-           <div class="form-inline">
-          <button type="submit" class="btn btn-warning">PUT</button>
-              <div class="form-group">
-                 <label>/v1/stocks/</label>
-                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
-                 <label>.html</label>
-              </div>
-           </div>
-</form>
-
-<form>
-           <div class="form-inline">
-          <button type="submit" class="btn btn-danger">DELETE</button>
-              <div class="form-group">
-                 <label>/v1/stocks/</label>
-                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
-                 <label>.html</label>
-              </div>
-           </div>
-</form>
+<!-- BEGIN SAMPLE DATA -->
+<form class="api-form" method="get" action="v1/users/:id.html"><div class="form-inline"><button type="submit" class="btn btn-primary">GET</button><div class="form-group"><label>/</label><label>v1/</label><label>users/</label> <input type="text" name="id" id="id" class="form-control" placeholder="id"/> <label>.html</label></div></div></form>
+<form class="api-form" method="get" action="v1/stocks/:symbol.html"><div class="form-inline"><button type="submit" class="btn btn-primary">GET</button><div class="form-group"><label>/</label><label>v1/</label><label>symbol/</label> <input type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/> <label>.html</label></div></div></form>
+<form class="api-form" method="get" action="v1/accounts/:id/stocks/:symbol.html"><div class="form-inline"><button type="submit" class="btn btn-primary">GET</button><div class="form-group"><label>/</label><label>v1/</label><label>accounts/</label> <input type="text" name="id" id="id" class="form-control" placeholder="id"/> <label>stocks/</label> <input type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/> <label>.html</label></div></div></form>
+<form class="api-form" method="patch" action="v1/users/:id.html"><div class="form-inline"><button type="submit" class="btn btn-success">PATCH</button><div class="form-group"><label>/</label><label>v1/</label><label>users/</label> <input type="text" name="id" id="id" class="form-control" placeholder="id"/> <label>.html</label></div></div></form>
+<form class="api-form" method="get" action="v1/users/:id.html"><div class="form-inline"><button type="submit" class="btn btn-warning">PUT</button><div class="form-group"><label>/</label><label>v1/</label><label>users/</label> <input type="text" name="id" id="id" class="form-control" placeholder="id"/> <label>.html</label></div></div></form>
+<form class="api-form" method="get" action="v1/users/:id.html"><div class="form-inline"><button type="submit" class="btn btn-danger">DELETE</button><div class="form-group"><label>/</label><label>v1/</label><label>users/</label> <input type="text" name="id" id="id" class="form-control" placeholder="id"/> <label>.html</label></div></div></form>
+<!-- END SAMPLE DATA -->
 
 <input type="checkbox" id="inlineCheckbox1" value="option1"> Display results inline:
 <div class="embed-responsive embed-responsive-16by9">
@@ -156,7 +98,7 @@
 $( document ).ready(function() {
 
   // process the form
-  $('#getstock').submit(function(event) {
+  $('.api-form').submit(function(event) {
 
 	  // get the orig src, it defines the url we will build
 	  var src = event.target.action.split(/[./]/);
