@@ -26,7 +26,7 @@ This skeleton app follows these patterns and best practices:
   * html files are fully preloaded into memory on startup, including injection of javascript and css, and removal of test data
   * during runtime, dynamic data can be injected into preloaded html, for delivery from memory of full html pages in one round trip
 
-See the [wiki](https://bitpost.com/wiki/Quick-http)) for performance stats and other information.
+See the [wiki](https://bitpost.com/wiki/Quick-http) for performance stats and other information.
 
 ### Usage
 
@@ -103,4 +103,4 @@ To build:
 The project depends on the code in another project [moodboom/Reusable] that holds a large amount of reusable code that has been built up over years.  There is room for cleanup and improvement of style, etc. in the codebase - for example there is both snake_case and camelCase.  But the code itself is clean and the functionality has been tested in several projects.
 
 This project uses code or inspiration from boost ASIO, twitter bootstrap and oath, eidheim/Simple-Web-Server, SQLiteCPP, etc.
-(additional notes on the [wiki](https://bitpost.com/wiki/Quick-http))
+
