@@ -52,19 +52,19 @@
       </div>
     </nav>
 
-    <div id="qhheader" class="container">
+    <div id="theheader" class="container">
 
     </div> <!-- /container -->
 
     <div class="frame" id="frame1top">
-        <div class="rss">
+        <div class="scrollable-div">
         <!-- BEGIN SAMPLE DATA --><form class="api-form" method="get" action="v1/accounts/:id/stocks/:symbol.html"><div class="form-inline"><button type="submit" class="btn btn-primary">GET</button><div class="form-group"><label>/</label><label>v1/</label><label>accounts/</label> <input type="text" name="id" class="form-control" placeholder="id"/> <label>stocks/</label> <input type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/> <label>.html</label></div></div></form><!-- END SAMPLE DATA -->
         </div>
     </div>
 
     <iframe class="frame" id="results"></iframe>
 
-    <footer id="qhfooter" class="footer">
+    <footer id="thefooter" class="footer">
       <div class="container">
         <p class="text-muted">
           <a class="pull-left" href="http://abettersoftware.com">© A better Software, Inc.</a>
@@ -135,8 +135,8 @@ $( document ).ready(function() {
 function adjustLayout(){
 
     // NOOB NOTE only use $vars for jq objects
-    var hh = $('#qhheader').outerHeight();
-    var fh = $('#qhfooter').outerHeight();
+    var hh = $('#theheader').outerHeight();
+    var fh = $('#thefooter').outerHeight();
     var h = $(window).height() - hh - fh;
     
     var cols = 1;

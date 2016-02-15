@@ -31,7 +31,7 @@ body {
   max-height: 100%;
 }
 
-.rss
+.scrollable-div
 {
     height: 100%; 
     overflow: auto;
