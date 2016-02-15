@@ -29,32 +29,9 @@ const vector<string> c_wrappers =
 {
     "<form class=\"api-form\" method=\"__API_method__\" action=\"__API_url__\"><div class=\"form-inline\">",                // HW_LINE_BEGIN
     "</div></form>",                                                                                                        // HW_LINE_END
-    "<button type=\"submit\" class=\"btn btn-__API_method__\">__API_method__</button><div class=\"form-group\">",           // HW_METHOD_BEGIN
-    "</div>",                                                                                                               // HW_METHOD_END
-    "<label>",                                                                                                              // HW_PATH_BEGIN
-    "</label>",                                                                                                             // HW_PATH_END
-    " <input type=\"text\" name=\"__API_variable_name__\" class=\"form-control\" placeholder=\"__API_variable_name__\"/> ", // HW_PARAM_BEGIN
-    ""                                                                                                                      // HW_PARAM_END
-
-    // OLD
-    /*
-    "",
-    "<br />",
-    "<a href=\"/\" role=\"button\" class=\"btn btn-moneygreen\">",
-    "</a>",
-    "<a href=\"/\" role=\"button\" class=\"btn btn-slategray\">",
-    "</a>",
-    "<a href=\"/\" role=\"button\" class=\"btn btn-schoolbusyellow\">",
-    "</a>",
-    "<a href=\"/\" role=\"button\" class=\"btn btn-default\">",
-    "</a>",
-    "<a href=\"/\" role=\"button\" class=\"btn btn-warning\">",
-    "</a>",
-    "<a href=\"/\" role=\"button\" class=\"btn btn-success\">",
-    "</a>",
-    "<a href=\"/\" role=\"button\" class=\"btn btn-moneygreen\">",
-    "</a>",
-    */
+    "<button type=\"submit\" class=\"btn btn-__API_method__\">__API_method__</button><div class=\"form-group\"></div>",     // HW_METHOD
+    "<label>__API_token__</label>",                                                                                         // HW_PATH
+    " <input type=\"text\" name=\"__API_token__\" class=\"form-control\" placeholder=\"__API_token__\"/> "                  // HW_PARAM
 };
 // ------------------------------------------------------------------------------
 
@@ -94,20 +71,20 @@ Controller::Controller(
 	API_({
         new APIGetLog    ( *this, HM_GET   , {"v1","log"                                                    }, {"html","json"} ),
         new APIGetUsers  ( *this, HM_GET   , {"v1","accounts"                                               }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_POST  , {"v1","accounts"                                               }, {"html","json"} ),
+        new APIGetUser   ( *this, HM_POST  , {"v1","accounts"                                               }, {"json"}        ),
         new APIGetUser   ( *this, HM_GET   , {"v1","accounts",":id"                                         }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_PUT   , {"v1","accounts",":id"                                         }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_DELETE, {"v1","accounts",":id"                                         }, {"html","json"} ),
+        new APIGetUser   ( *this, HM_PUT   , {"v1","accounts",":id"                                         }, {"json"}        ),
+        new APIGetUser   ( *this, HM_DELETE, {"v1","accounts",":id"                                         }, {"json"}        ),
         new APIGetUser   ( *this, HM_GET   , {"v1","accounts",":id","portfolios"                            }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_POST  , {"v1","accounts",":id","portfolios"                            }, {"html","json"} ),
+        new APIGetUser   ( *this, HM_POST  , {"v1","accounts",":id","portfolios"                            }, {"json"}        ),
         new APIGetUser   ( *this, HM_GET   , {"v1","accounts",":id","portfolios",":id"                      }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_PUT   , {"v1","accounts",":id","portfolios",":id"                      }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_DELETE, {"v1","accounts",":id","portfolios",":id"                      }, {"html","json"} ),
+        new APIGetUser   ( *this, HM_PUT   , {"v1","accounts",":id","portfolios",":id"                      }, {"json"}        ),
+        new APIGetUser   ( *this, HM_DELETE, {"v1","accounts",":id","portfolios",":id"                      }, {"json"}        ),
         new APIGetUser   ( *this, HM_GET   , {"v1","accounts",":id","portfolios",":id","stocks"             }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_POST  , {"v1","accounts",":id","portfolios",":id","stocks"             }, {"html","json"} ),
+        new APIGetUser   ( *this, HM_POST  , {"v1","accounts",":id","portfolios",":id","stocks"             }, {"json"}        ),
         new APIGetUser   ( *this, HM_GET   , {"v1","accounts",":id","portfolios",":id","stocks",":symbol"   }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_PUT   , {"v1","accounts",":id","portfolios",":id","stocks",":symbol"   }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_DELETE, {"v1","accounts",":id","portfolios",":id","stocks",":symbol"   }, {"html","json"} ),
+        new APIGetUser   ( *this, HM_PUT   , {"v1","accounts",":id","portfolios",":id","stocks",":symbol"   }, {"json"}        ),
+        new APIGetUser   ( *this, HM_DELETE, {"v1","accounts",":id","portfolios",":id","stocks",":symbol"   }, {"json"}        ),
 	})
 
 {
