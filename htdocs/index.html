@@ -41,11 +41,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="http://abettersoftware.com/">A better Software, Inc.</a></li>
-              </ul>
+            <li>
+            <a href="#"><input type="checkbox" id="inlineCheckbox" value="option"> Display results inline</a>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -55,92 +52,25 @@
       </div>
     </nav>
 
-    <div class="container">
-
-<form id="getstock" method="get" action="v1/users/:id.html"><div class="form-inline"><button type="submit" class="btn btn-primary">GET</button><div class="form-group"><label>/</label><label>v1/</label><label>users/</label> <input type="text" name="id" id="id" class="form-control" placeholder="id"/> <label>.html</label></div></div></form>
-
-<form id="getstock" method="get"><div class="form-inline">
-<button type="submit" class="btn btn-primary">GET</button><div class="form-group">
-<label>/</label><label>v1/</label><label>stocks/</label>
-<input type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
-<label>.html</label></div>
-</div>
-</form>
-
-<form name="myform" method="get">
-           <div class="form-inline">
-          <button type="submit" class="btn btn-primary" value="save">GET</button>
-              <div class="form-group">
-                 <label>/v1/accounts/</label>
-                 <input type="text" id="account_id" class="form-control" placeholder="id"/>
-                 <label>/stocks/</label>
-                 <input type="text" id="symbol" class="form-control" placeholder="symbol"/>
-                 <label>.html</label>
-              </div>
-           </div>
-</form>
-
-<form method="GET">
-           <div class="form-inline">
-          <button type="submit" class="btn btn-primary">GET</button>
-              <div class="form-group">
-                 <label>/v1/stocks/</label>
-                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
-                 <label>.html</label>
-              </div>
-           </div>
-</form>
-
-<form>
-           <div class="form-inline">
-          <button type="submit" class="btn btn-success">PATCH</button>
-              <div class="form-group">
-                 <label>/v1/stocks/</label>
-                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
-                 <label>.html</label>
-              </div>
-           </div>
-</form>
-
-<form>
-           <div class="form-inline">
-          <button type="submit" class="btn btn-warning">PUT</button>
-              <div class="form-group">
-                 <label>/v1/stocks/</label>
-                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
-                 <label>.html</label>
-              </div>
-           </div>
-</form>
-
-<form>
-           <div class="form-inline">
-          <button type="submit" class="btn btn-danger">DELETE</button>
-              <div class="form-group">
-                 <label>/v1/stocks/</label>
-                 <input required type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/>
-                 <label>.html</label>
-              </div>
-           </div>
-</form>
-
-<input type="checkbox" id="inlineCheckbox1" value="option1"> Display results inline:
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe id="results" class="embed-responsive-item"></iframe>
-</div>
-
-
-<!-- /v1/stocks.html CONTENTS -->
+    <div id="theheader" class="container">
 
     </div> <!-- /container -->
 
+    <div class="frame" id="frame1top">
+        <div class="scrollable-div">
+        <!-- BEGIN SAMPLE DATA --><form class="api-form" method="get" action="v1/accounts/:id/stocks/:symbol.html"><div class="form-inline"><button type="submit" class="btn btn-primary">GET</button><div class="form-group"><label>/</label><label>v1/</label><label>accounts/</label> <input type="text" name="id" class="form-control" placeholder="id"/> <label>stocks/</label> <input type="text" name="symbol" id="symbol" class="form-control" placeholder="symbol"/> <label>.html</label></div></div></form><!-- END SAMPLE DATA -->
+        </div>
+    </div>
 
-    <footer class="footer">
+    <iframe class="frame" id="results"></iframe>
+
+    <footer id="thefooter" class="footer">
       <div class="container">
-        <p class="text-muted"><a href="http://abettersoftware.com">A better Software, Inc.</a></p>
+        <p class="text-muted">
+          <a class="pull-left" href="http://abettersoftware.com">© A better Software, Inc.</a>
+        </p>
       </div>
     </footer>
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -153,10 +83,19 @@
 
 <script>
 
+$(window).resize(adjustLayout).resize();
+
 $( document ).ready(function() {
 
+    /* call function in ready handler*/
+    adjustLayout();
+	
+  $('#inlineCheckbox').change(function() {
+      adjustLayout();
+  });
+
   // process the form
-  $('#getstock').submit(function(event) {
+  $('.api-form').submit(function(event) {
 
 	  // get the orig src, it defines the url we will build
 	  var src = event.target.action.split(/[./]/);
@@ -178,26 +117,63 @@ $( document ).ready(function() {
 			  url += ".";
 	  }
 
-	  /*
-      // get the form data
-      // there are many ways to get this data using jQuery (you can use the class or id also)
-      var formData = {
-          'symbol'            : $('input[name=symbol]').val()
-          'email'             : $('input[name=email]').val(),
-          'superheroAlias'    : $('input[name=superheroAlias]').val()
-      };
       // process the form
-      $('#results').attr('src','v1/stocks/' + formData['symbol'] + '.html');
-	  */
+      // Show inline if the checkbox is selected
+      if ($('#inlineCheckbox').is(":checked"))
+          $('#results').attr('src',url);
 
-      // process the form
-      $('#results').attr('src',url);
+      // Otherwise, redirect the page
+      else
+    	  window.location.href = url;
         
       // stop the form from submitting the normal way and refreshing the page
       event.preventDefault();
     
   });
 });
+
+function adjustLayout(){
+
+    // NOOB NOTE only use $vars for jq objects
+    var hh = $('#theheader').outerHeight();
+    var fh = $('#thefooter').outerHeight();
+    var h = $(window).height() - hh - fh;
+    
+    var cols = 1;
+    var col_gap = 16;
+    
+    // Margin is based on percent of one column width, so it goes to zero before column width does.  :-)
+    // Width is based on total width minus margins, then split between columns.
+    var margin = ($(window).width() / cols) * .04;
+    var w = ($(window).width() - (margin * (cols + 1))) / cols;
+
+    var h1 = h;
+    if ($('#inlineCheckbox').is(":checked"))
+        h1 = 3*h/4;
+
+    $('#frame1top').css({
+        display:'block', 
+        position:'absolute',
+        left: margin * 1 + w * 0,
+        top: hh,
+        width: w,
+        height: h1
+    });
+    
+    if ($('#inlineCheckbox').is(":checked"))
+	    $('#results').css({
+	        display:'block', 
+	        position:'absolute',
+	        left: margin * 1 + w * 0,
+	        top: hh + h1 + col_gap,
+	        width: w,
+	        height: 1*h/4 - col_gap
+	    });
+    else
+        $('#results').css({
+            display:'none' 
+        });
+}
 
 </script>
 

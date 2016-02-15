@@ -10,6 +10,17 @@ body {
   <!-- padding-top: 2px; -->
 }
 
+.frame {
+  display:none;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .container
 {
     width: 96%;
@@ -20,18 +31,141 @@ body {
   max-height: 100%;
 }
 
-.iframe1 iframe, .iframe2 iframe, .iframe3 iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
+.scrollable-div
+{
+    height: 100%; 
+    overflow: auto;
 }
 
 .btn {
+  width: 6em;
   margin: 0em .4em .6em 0em;
 }
+
+.btn-GET {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.btn-GET:focus,
+.btn-GET.focus {
+  color: #fff;
+  background-color: #286090;
+  border-color: #122b40;
+}
+.btn-GET:hover {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+.btn-GET:active,
+.btn-GET.active,
+.open > .dropdown-toggle.btn-GET {
+  color: #fff;
+  background-color: #286090;
+  border-color: #204d74;
+}
+
+.btn-POST {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn-POST:focus,
+.btn-POST.focus {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #255625;
+}
+.btn-POST:hover {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+.btn-POST:active,
+.btn-POST.active,
+.open > .dropdown-toggle.btn-POST {
+  color: #fff;
+  background-color: #449d44;
+  border-color: #398439;
+}
+
+.btn-PATCH {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn-PATCH:focus,
+.btn-PATCH.focus {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #1b6d85;
+}
+.btn-PATCH:hover {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+.btn-PATCH:active,
+.btn-PATCH.active,
+.open > .dropdown-toggle.btn-PATCH {
+  color: #fff;
+  background-color: #31b0d5;
+  border-color: #269abc;
+}
+
+.btn-PUT {
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.btn-PUT:focus,
+.btn-PUT.focus {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #985f0d;
+}
+.btn-PUT:hover {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+.btn-PUT:active,
+.btn-PUT.active,
+.open > .dropdown-toggle.btn-PUT {
+  color: #fff;
+  background-color: #ec971f;
+  border-color: #d58512;
+}
+
+.btn-DELETE {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-DELETE:focus,
+.btn-DELETE.focus {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #761c19;
+}
+.btn-DELETE:hover {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.btn-DELETE:active,
+.btn-DELETE.active,
+.open > .dropdown-toggle.btn-DELETE {
+  color: #fff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+
+<!-- custom bootstrap 3 button css generated here charliepark.org/bootstrap_buttons/ -->
+<!-- 113 30 36 12 -->
+<!-- 36 82 67 18 -->
+<!-- 0 0 76 11 -->
 
 .btn-moneygreen {
   background-color: hsl(113, 30%, 24%) !important;
@@ -84,7 +218,3 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-<!-- custom bootstrap 3 button css generated here charliepark.org/bootstrap_buttons/ -->
-<!-- 113 30 36 12 -->
-<!-- 36 82 67 18 -->
-<!-- 0 0 76 11 -->
