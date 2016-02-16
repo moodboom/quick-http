@@ -6,7 +6,44 @@
 
 ![Self-documentation example](REST_selfdoc_screenshot.png?raw=true "Self-documentation example")
 
-### Summary
+### Usage
+
+Provide static headers, API format, and call handlers like this:
+```
+const vector<string> c_includes =
+{
+    "favicon.ico",
+    "bootstrap/css/bootstrap.min.css",
+    "css/main.css",
+    "bootstrap/assets/js/jquery.min.js",
+    "bootstrap/js/bootstrap.min.js",
+};
+
+Controller::Controller()
+) :
+    API_({
+        new APIGetLog       ( *this, HM_GET   , {"v1","log"                                                    }, {"html","json"} ),
+        new APIGetUsers     ( *this, HM_GET   , {"v1","accounts"                                               }, {"html","json"} ),
+        new APIPostUser     ( *this, HM_POST  , {"v1","accounts"                                               }, {"json"}        ),
+        new APIGetAccounts  ( *this, HM_GET   , {"v1","accounts",":id"                                         }, {"html","json"} ),
+        new APIPutAccounts  ( *this, HM_PUT   , {"v1","accounts",":id"                                         }, {"json"}        ),
+        new APIDeleteAccount( *this, HM_DELETE, {"v1","accounts",":id"                                         }, {"json"}        ),
+        // (etc)...
+    })
+{}
+
+bool APIGetLog::handle_call(reply& rep)
+{
+    // Inject the log into our static html.
+    string rawlog = get_log_contents();
+    replace(static_html_, "<!-- /v1/log.html log goes here -->", rawlog);
+    rep.content = static_html_;
+
+    return true;
+}
+```
+
+### Patterns
 
 This skeleton app follows these patterns and best practices:
 
@@ -27,60 +64,6 @@ This skeleton app follows these patterns and best practices:
   * during runtime, dynamic data can be injected into preloaded html, for delivery from memory of full html pages in one round trip
 
 See the [wiki](https://bitpost.com/wiki/Quick-http) for performance stats and other information.
-
-### Usage
-
-The base RESTful classes do the heavy lifting, so your derived class just provides the static headers, API format, and call handlers.  Example:
-```
-const vector<string> c_includes =
-{
-    "favicon.ico",
-    "bootstrap/css/bootstrap.min.css",
-    "css/grid.css",
-    "css/sticky-footer-navbar.css",
-    "css/main.css",
-    "bootstrap/assets/js/jquery.min.js",
-    "bootstrap/js/bootstrap.min.js",
-};
-
-const vector<API_call*> c_vpAPI =
-{
-    new APIGetLog         ( "GET"   , {"v1","log"                     }, {"html","json"} ),
-    new APIGetStocks      ( "GET"   , {"v1","stocks"                  }, {"html","json"} ),
-    new APIGetStock       ( "GET"   , {"v1","stocks",":ABCD"          }, {"html","json"} ),
-    new APIGetParameters  ( "GET"   , {"v1","parameters"              }, {"html","json"} ),
-    new APIGetParameter   ( "GET"   , {"v1","parameters",":id"        }, {"html","json"} ),
-    new APIGetAccounts    ( "GET"   , {"v1","accounts"                }, {"html","json"} ),
-    new APIGetAccount     ( "GET"   , {"v1","accounts",":id"          }, {"html","json"} ),
-    new APIGetAccountChart( "GET"   , {"v1","accounts",":id","chart"  }, {"html","json"} ),
-    new APIPostAccountPick( "POST"  , {"v1","accounts",":id","pick"   }, {"html","json"}, { pair<string,string>("symbol","[ABCD]"),pair<string,string>("active","[true|false]")      } ),
-    new APIGetUsers       ( "GET"   , {"v1","users"                   }, {"html","json"} ),    // ADMIN
-    new APIGetUser        ( "GET"   , {"v1","users",":id"             }, {"html","json"} ),
-};
-
-server_handler::server_handler()
-:
-    // call base class
-    inherited(
-        c_includes,
-        c_vpAPI,
-        1000000         // Allow max of 1MB requests for now
-    )
-{
-}
-
-// The static html for this function was automatically loaded from [htdocs/v1/log.html], 
-// by the base class, which followed the path of the API format.
-bool APIGetLog::handle_call(reply& rep)
-{
-    // Inject the log into our static html.
-    string rawlog = get_log_contents();
-    replace(static_html_, "<!-- /v1/log.html log goes here -->", rawlog);
-    rep.content = static_html_;
-
-    return true;
-}
-```
 
 ### Getting started
 
