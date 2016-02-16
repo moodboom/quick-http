@@ -22,12 +22,12 @@ const vector<string> c_includes =
 Controller::Controller()
 ) :
     API_({
-        new APIGetLog       ( *this, HM_GET   , {"v1","log"                                                    }, {"html","json"} ),
-        new APIGetUsers     ( *this, HM_GET   , {"v1","accounts"                                               }, {"html","json"} ),
-        new APIPostUser     ( *this, HM_POST  , {"v1","accounts"                                               }, {"json"}        ),
-        new APIGetAccounts  ( *this, HM_GET   , {"v1","accounts",":id"                                         }, {"html","json"} ),
-        new APIPutAccounts  ( *this, HM_PUT   , {"v1","accounts",":id"                                         }, {"json"}        ),
-        new APIDeleteAccount( *this, HM_DELETE, {"v1","accounts",":id"                                         }, {"json"}        ),
+        new APIGetLog       ( *this, HM_GET   , {"v1","log"            }, {"html","json"} ),
+        new APIGetUsers     ( *this, HM_GET   , {"v1","accounts"       }, {"html","json"} ),
+        new APIPostUser     ( *this, HM_POST  , {"v1","accounts"       }, {"json"}        ),
+        new APIGetAccounts  ( *this, HM_GET   , {"v1","accounts",":id" }, {"html","json"} ),
+        new APIPutAccounts  ( *this, HM_PUT   , {"v1","accounts",":id" }, {"json"}        ),
+        new APIDeleteAccount( *this, HM_DELETE, {"v1","accounts",":id" }, {"json"}        ),
         // (etc)...
     })
 {}
