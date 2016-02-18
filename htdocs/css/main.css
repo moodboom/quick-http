@@ -26,11 +26,6 @@ body {
     width: 96%;
 }
 
-.myi
-{
-  max-height: 100%;
-}
-
 .scrollable-div
 {
     height: 100%; 
@@ -38,7 +33,9 @@ body {
 }
 
 .btn {
+  <!-- for a fixed button size -->
   width: 6em;
+
   margin: 0em .4em .6em 0em;
 }
 
