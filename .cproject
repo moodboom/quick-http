@@ -4,8 +4,8 @@
 		<cconfiguration id="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.1592085576.401666197.1501406514">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.1592085576.401666197.1501406514" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<macros>
-					<stringMacro name="CPPFLAGS" type="VALUE_TEXT" value="$CPPFLAGS"/>
 					<stringMacro name="CFLAGS" type="VALUE_TEXT" value="-ggdb3 -O0"/>
+					<stringMacro name="CPPFLAGS" type="VALUE_TEXT" value="$CPPFLAGS"/>
 					<stringMacro name="LDFLAGS" type="VALUE_TEXT" value="$DEBUG_LDFLAGS"/>
 					<stringMacro name="BOOST_NO_AUTO_PTR" type="VALUE_TEXT" value=""/>
 					<stringMacro name="CXXFLAGS" type="VALUE_TEXT" value="-ggdb3 -O0"/>
@@ -98,10 +98,11 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
-		<configuration configurationName="Build (GNU)">
+		<configuration configurationName="Release"/>
+		<configuration configurationName="Debug">
 			<resource resourceType="PROJECT" workspacePath="/My Quick Http App"/>
 		</configuration>
-		<configuration configurationName="Debug">
+		<configuration configurationName="Build (GNU)">
 			<resource resourceType="PROJECT" workspacePath="/My Quick Http App"/>
 		</configuration>
 	</storageModule>
