@@ -89,7 +89,7 @@ $( document ).ready(function() {
 
     /* call function in ready handler*/
     adjustLayout();
-	
+    
   $('#inlineCheckbox').change(function() {
       adjustLayout();
   });
@@ -97,25 +97,26 @@ $( document ).ready(function() {
   // process the form
   $('.api-form').submit(function(event) {
 
-	  // get the orig src, it defines the url we will build
-	  var src = event.target.action.split(/[./]/);
-	  var base = event.target.baseURI.split(/[./]/);
-	  var n = 0;
-	  while (src[n] == base[n]) {
+      // get the orig src, it defines the url we will build
+      var src = event.target.action.split(/[./]/);
+      var base = event.target.baseURI.split(/[./]/);
+      var n = 0;
+      while (src[n] == base[n]) {
           n++;
-	  }
-	  var url = "";
-	  for (; n < src.length; n++) {
-		  if (src[n][0] == ":") {
-			  url += $('input[name='+src[n].substr(1)+']').val()
-		  } else {
-			  url += src[n];
-		  }
+      }
+      var url = "";
+      for (; n < src.length; n++) {
+          if (src[n][0] == ":") {
+              var name = $(this).find('input[name='+src[n].substr(1)+']').val();
+              url += name;
+          } else {
+              url += src[n];
+          }
           if (n < src.length - 2)
               url += "/";
           else if (n == src.length - 2)
-			  url += ".";
-	  }
+              url += ".";
+      }
 
       // process the form
       // Show inline if the checkbox is selected
@@ -124,7 +125,7 @@ $( document ).ready(function() {
 
       // Otherwise, redirect the page
       else
-    	  window.location.href = url;
+          window.location.href = url;
         
       // stop the form from submitting the normal way and refreshing the page
       event.preventDefault();
@@ -161,14 +162,14 @@ function adjustLayout(){
     });
     
     if ($('#inlineCheckbox').is(":checked"))
-	    $('#results').css({
-	        display:'block', 
-	        position:'absolute',
-	        left: margin * 1 + w * 0,
-	        top: hh + h1 + col_gap,
-	        width: w,
-	        height: 1*h/4 - col_gap
-	    });
+        $('#results').css({
+            display:'block', 
+            position:'absolute',
+            left: margin * 1 + w * 0,
+            top: hh + h1 + col_gap,
+            width: w,
+            height: 1*h/4 - col_gap
+        });
     else
         $('#results').css({
             display:'none' 
