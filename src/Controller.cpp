@@ -69,22 +69,17 @@ Controller::Controller(
 	//  http://tools.ietf.org/html/rfc6902
 	// =====================================================================================
 	API_({
-        new APIGetLog    ( *this, HM_GET   , {"v1","log"                                                    }, {"html","json"} ),
-        new APIGetUsers  ( *this, HM_GET   , {"v1","accounts"                                               }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_POST  , {"v1","accounts"                                               }, {"json"}        ),
-        new APIGetUser   ( *this, HM_GET   , {"v1","accounts",":id"                                         }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_PUT   , {"v1","accounts",":id"                                         }, {"json"}        ),
-        new APIGetUser   ( *this, HM_DELETE, {"v1","accounts",":id"                                         }, {"json"}        ),
-        new APIGetUser   ( *this, HM_GET   , {"v1","accounts",":id","portfolios"                            }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_POST  , {"v1","accounts",":id","portfolios"                            }, {"json"}        ),
-        new APIGetUser   ( *this, HM_GET   , {"v1","accounts",":id","portfolios",":id"                      }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_PUT   , {"v1","accounts",":id","portfolios",":id"                      }, {"json"}        ),
-        new APIGetUser   ( *this, HM_DELETE, {"v1","accounts",":id","portfolios",":id"                      }, {"json"}        ),
-        new APIGetUser   ( *this, HM_GET   , {"v1","accounts",":id","portfolios",":id","stocks"             }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_POST  , {"v1","accounts",":id","portfolios",":id","stocks"             }, {"json"}        ),
-        new APIGetUser   ( *this, HM_GET   , {"v1","accounts",":id","portfolios",":id","stocks",":symbol"   }, {"html","json"} ),
-        new APIGetUser   ( *this, HM_PUT   , {"v1","accounts",":id","portfolios",":id","stocks",":symbol"   }, {"json"}        ),
-        new APIGetUser   ( *this, HM_DELETE, {"v1","accounts",":id","portfolios",":id","stocks",":symbol"   }, {"json"}        ),
+        new APIGetLog           ( *this, HM_GET   , {"v1","log"                                 }, {"html","json"} ),
+        new APIGetAccounts      ( *this, HM_GET   , {"v1","accounts"                            }, {"html","json"} ),
+        new APIPostAccount      ( *this, HM_POST  , {"v1","accounts"                            }, {"json"}        ),
+        new APIGetAccount       ( *this, HM_GET   , {"v1","accounts",":id"                      }, {"html","json"} ),
+        new APIPutAccount       ( *this, HM_PUT   , {"v1","accounts",":id"                      }, {"json"}        ),
+        new APIDeleteAccount    ( *this, HM_DELETE, {"v1","accounts",":id"                      }, {"json"}        ),
+        new APIGetPortfolios    ( *this, HM_GET   , {"v1","accounts",":id","portfolios"         }, {"html","json"} ),
+        new APIPostPortfolio    ( *this, HM_POST  , {"v1","accounts",":id","portfolios"         }, {"json"}        ),
+        new APIGetPortfolio     ( *this, HM_GET   , {"v1","accounts",":id","portfolios",":id"   }, {"html","json"} ),
+        new APIPutPortfolio     ( *this, HM_PUT   , {"v1","accounts",":id","portfolios",":id"   }, {"json"}        ),
+        new APIDeletePortfolio  ( *this, HM_DELETE, {"v1","accounts",":id","portfolios",":id"   }, {"json"}        ),
 	})
 
 {

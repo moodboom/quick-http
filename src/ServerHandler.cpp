@@ -26,8 +26,8 @@ bool APIGetLog::handle_call(const string& type, reply& rep)
 
         // Inject the log into our static html.
         // NOTE that this uses "replace" from utilities.hpp.
-        replace(static_html_, "<!-- /v1/log.html log goes here -->", log);
         rep.content = static_html_;
+        replace(rep.content, "<!-- /v1/log.html log goes here -->", log);
 
         return true;
     }
@@ -35,16 +35,13 @@ bool APIGetLog::handle_call(const string& type, reply& rep)
 }
 
 
-bool APIGetUsers::handle_call(const string& type, reply& rep)
-{
-    // TODO
-    return false;
-}
-
-
-bool APIGetUser::handle_call(const string& type, reply& rep)
-{
-    // TODO
-    return false;
-}
-
+bool APIGetAccounts    ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
+bool APIPostAccount    ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
+bool APIGetAccount     ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
+bool APIPutAccount     ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
+bool APIDeleteAccount  ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
+bool APIGetPortfolios  ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
+bool APIPostPortfolio  ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
+bool APIGetPortfolio   ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
+bool APIPutPortfolio   ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
+bool APIDeletePortfolio::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
