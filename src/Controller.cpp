@@ -27,11 +27,11 @@ const vector<string> c_includes =
 };
 const vector<string> c_wrappers =
 {
-    "<form class=\"api-form\" method=\"__API_method__\" action=\"__API_url__\"><div class=\"form-inline\">",                // HW_LINE_BEGIN
-    "</div></form>",                                                                                                        // HW_LINE_END
-    "<button type=\"submit\" class=\"btn btn-__API_method__\">__API_method__</button><div class=\"form-group\"></div>",     // HW_METHOD
-    "<label>__API_token__</label>",                                                                                         // HW_PATH
-    " <input type=\"text\" name=\"__API_token__\" class=\"form-control\" placeholder=\"__API_token__\"/> "                  // HW_PARAM
+    "<form class=\"api-form\" method=\"__API_method__\" action=\"__API_url__\"><div class=\"form-inline\">",                        // HW_LINE_BEGIN
+    "</div></form>",                                                                                                                // HW_LINE_END
+    "<button type=\"submit\" class=\"btn btn-fixed btn-__API_method__\">__API_method__</button><div class=\"form-group\"></div>",   // HW_METHOD
+    "<label>__API_token__</label>",                                                                                                 // HW_PATH
+    " <input type=\"text\" name=\"__API_token__\" class=\"form-control\" placeholder=\"__API_token__\"/> "                          // HW_PARAM
 };
 // ------------------------------------------------------------------------------
 
