@@ -32,6 +32,6 @@ protected:
 // -----------------
 // API call handlers
 // -----------------
-class APIGetLog             : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(reply& rep); };
-class APIGetUsers           : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(reply& rep); };
-class APIGetUser            : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(reply& rep); };
+class APIGetLog             : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
+class APIGetUsers           : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
+class APIGetUser            : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };

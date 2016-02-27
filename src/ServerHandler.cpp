@@ -6,16 +6,16 @@
 // CONSTANTS GLOBALS STATICS
 // ------------------------------------------------------------------------------
 
-bool APIGetLog::handle_call(reply& rep)
+bool APIGetLog::handle_call(const string& type, reply& rep)
 {
     string rawlog = read_file(g_base_log_filename + ".log");
 
-    if (!types_.empty() && types_[0] == "txt")
+    if (strings_are_equal(type,"txt"))
     {
         rep.content = rawlog;
         return true;
 
-    } else if (!types_.empty() && types_[0] == "html")
+    } else if (strings_are_equal(type,"html"))
     {
         // Add <br>.
         string log;
@@ -35,14 +35,14 @@ bool APIGetLog::handle_call(reply& rep)
 }
 
 
-bool APIGetUsers::handle_call(reply& rep)
+bool APIGetUsers::handle_call(const string& type, reply& rep)
 {
     // TODO
     return false;
 }
 
 
-bool APIGetUser::handle_call(reply& rep)
+bool APIGetUser::handle_call(const string& type, reply& rep)
 {
     // TODO
     return false;
