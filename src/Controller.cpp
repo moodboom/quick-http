@@ -69,7 +69,7 @@ Controller::Controller(
 	//  http://tools.ietf.org/html/rfc6902
 	// =====================================================================================
 	API_({
-        new APIGetLog           ( *this, HM_GET   , {"v1","log"                                 }, {"html","json"} ),
+        new APIGetLog           ( *this, HM_GET   , {"v1","log"                                 }, {"html","txt" } ),
         new APIGetAccounts      ( *this, HM_GET   , {"v1","accounts"                            }, {"html","json"} ),
         new APIPostAccount      ( *this, HM_POST  , {"v1","accounts"                            }, {"json"}        ),
         new APIGetAccount       ( *this, HM_GET   , {"v1","accounts",":id"                      }, {"html","json"} ),
