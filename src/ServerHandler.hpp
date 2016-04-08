@@ -32,14 +32,14 @@ protected:
 // -----------------
 // API call handlers
 // -----------------
-class APIGetLog           : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
-class APIGetAccounts      : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
-class APIPostAccount      : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
-class APIGetAccount       : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
-class APIPutAccount       : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
-class APIDeleteAccount    : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
-class APIGetPortfolios    : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
-class APIPostPortfolio    : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
-class APIGetPortfolio     : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
-class APIPutPortfolio     : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
-class APIDeletePortfolio  : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const string& type, reply& rep); };
+class APIGetLog           : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };
+class APIGetAccounts      : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };
+class APIPostAccount      : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };
+class APIGetAccount       : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };
+class APIPutAccount       : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };
+class APIDeleteAccount    : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };
+class APIGetPortfolios    : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };
+class APIPostPortfolio    : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };
+class APIGetPortfolio     : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };
+class APIPutPortfolio     : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };
+class APIDeletePortfolio  : public MyApiCall { using MyApiCall::MyApiCall; public: virtual bool handle_call(const API_call& caller, reply& rep); };

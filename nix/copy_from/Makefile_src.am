@@ -12,7 +12,7 @@ VPATH=../../src:../../../../Reusable/c++:../../../../Reusable/c++/sqlite
 # TODO SWITCH TO CMAKE.  :-)
 # MDM See bootstrap.sh, which sets LDFLAGS from variables defined in .bashrc.
 # MDM system boost used to work fine on gentoo - now we ALWAYS USE CUSTOM BUILDS so do NOT use the system stuff!
-my_quick_http_app_LDADD = $(LDFLAGS) -lpthread -lboost_system -lssl -lboost_thread -lboost_date_time -lboost_filesystem -lcrypto -ldl
+my_quick_http_app_LDADD = $(LDFLAGS) -lpthread -lboost_system -lssl -lboost_thread -lboost_date_time -lboost_filesystem -lboost_regex -lcrypto -ldl
 
 # MDM Adjusting http files as we merge v1 and v2...
 bin_PROGRAMS = my_quick_http_app

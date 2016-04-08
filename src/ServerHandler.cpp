@@ -6,16 +6,16 @@
 // CONSTANTS GLOBALS STATICS
 // ------------------------------------------------------------------------------
 
-bool APIGetLog::handle_call(const string& type, reply& rep)
+bool APIGetLog::handle_call(const API_call& caller, reply& rep)
 {
     string rawlog = read_file(g_base_log_filename + ".log");
 
-    if (strings_are_equal(type,"txt"))
+    if (caller.b_no_type() || caller.b_type("txt"))
     {
         rep.content = rawlog;
         return true;
 
-    } else if (strings_are_equal(type,"html"))
+    } else if (caller.b_type("html"))
     {
         // Add <br>.
         string log;
@@ -35,13 +35,14 @@ bool APIGetLog::handle_call(const string& type, reply& rep)
 }
 
 
-bool APIGetAccounts    ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
-bool APIPostAccount    ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
-bool APIGetAccount     ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
-bool APIPutAccount     ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
-bool APIDeleteAccount  ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
-bool APIGetPortfolios  ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
-bool APIPostPortfolio  ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
-bool APIGetPortfolio   ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
-bool APIPutPortfolio   ::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
-bool APIDeletePortfolio::handle_call(const string& type, reply& rep) { rep.content = static_html_; return true; }
+// TODO
+bool APIGetAccounts    ::handle_call(const API_call& caller, reply& rep) { /* rep.content = static_html_; */ return true; }
+bool APIPostAccount    ::handle_call(const API_call& caller, reply& rep) { /* rep.content = static_html_; */ return true; }
+bool APIGetAccount     ::handle_call(const API_call& caller, reply& rep) { /* rep.content = static_html_; */ return true; }
+bool APIPutAccount     ::handle_call(const API_call& caller, reply& rep) { /* rep.content = static_html_; */ return true; }
+bool APIDeleteAccount  ::handle_call(const API_call& caller, reply& rep) { /* rep.content = static_html_; */ return true; }
+bool APIGetPortfolios  ::handle_call(const API_call& caller, reply& rep) { /* rep.content = static_html_; */ return true; }
+bool APIPostPortfolio  ::handle_call(const API_call& caller, reply& rep) { /* rep.content = static_html_; */ return true; }
+bool APIGetPortfolio   ::handle_call(const API_call& caller, reply& rep) { /* rep.content = static_html_; */ return true; }
+bool APIPutPortfolio   ::handle_call(const API_call& caller, reply& rep) { /* rep.content = static_html_; */ return true; }
+bool APIDeletePortfolio::handle_call(const API_call& caller, reply& rep) { /* rep.content = static_html_; */ return true; }
