@@ -30,16 +30,16 @@ Tire g_TireKey(0,g_CarKey,"key");
 // max_db_ids
 // ==========
 // These are tracked in-memory so we can create new objects without hitting db.
-int_fast64_t AppUser::au_max_db_id_ = -1;
-int_fast64_t Tire::Tire_max_db_id_ = -1;
-int_fast64_t Car::Car_max_db_id_ = -1;
+int64_t AppUser::au_max_db_id_ = -1;
+int64_t Tire::Tire_max_db_id_ = -1;
+int64_t Car::Car_max_db_id_ = -1;
 // ==========
 
 // ------------------------------------------------------------------------------
 
 
 Tire::Tire(
-    int_fast32_t db_id,
+    int64_t db_id,
 	Car& car,
     string name,
     string type
@@ -57,7 +57,7 @@ Tire::Tire(
 
 
 Car::Car(
-    int_fast32_t db_id,
+    int64_t db_id,
     AppUser& au,
     string name,
     bool b_active
@@ -117,7 +117,7 @@ Tire& Car::addTireToMemory(Tire* pTire)
     tires_.insert(pTire);
     return *pTire;
 }
-TireIt Car::findTire(int_fast32_t id)
+TireIt Car::findTire(int64_t id)
 {
     g_TireKey.db_id_ = id;
     return tires_.find(&g_TireKey);
@@ -147,7 +147,7 @@ Car& AppUser::addCarToMemory(Car* pCar)
     cars_.insert(pCar);
     return *pCar;
 }
-CarIt AppUser::findCar(int_fast32_t id)
+CarIt AppUser::findCar(int64_t id)
 {
     g_CarKey.db_id_ = id;
     return cars_.find(&g_CarKey);

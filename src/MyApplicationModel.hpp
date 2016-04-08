@@ -26,7 +26,7 @@ typedef PersistentIDObject inherited;
 
 public:
     Tire(
-        int_fast32_t db_id,
+        int64_t db_id,
 		Car& car,
         string name = "default",
 		string type = "Pirelli"
@@ -38,7 +38,7 @@ public:
     string type_;
 
     virtual void assignNewDbIdAsNeeded() { if (db_id_ == -1) { ++Tire_max_db_id_; db_id_ = Tire_max_db_id_; setDirty(); } }
-    static int_fast64_t Tire_max_db_id_;
+    static int64_t Tire_max_db_id_;
 };
 
 // ========================================================
@@ -57,7 +57,7 @@ typedef PersistentIDObject inherited;
 public:
 
     Car(
-        int_fast32_t db_id,
+        int64_t db_id,
         AppUser& au,
         string name,
         bool b_active = true
@@ -78,7 +78,7 @@ public:
     // ~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=
     Tire& addTire(Tire* pd);
     Tire& addTireToMemory(Tire* pd);
-    TireIt findTire(int_fast32_t db_id);
+    TireIt findTire(int64_t db_id);
     bool removeTire(TireIt itd);
     // ~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=
 
@@ -92,7 +92,7 @@ public:
     Tires tires_;
 
     virtual void assignNewDbIdAsNeeded() { if (db_id_ == -1) { ++Car_max_db_id_; db_id_ = Car_max_db_id_; setDirty(); } }
-    static int_fast64_t Car_max_db_id_;
+    static int64_t Car_max_db_id_;
 
 protected:
 
@@ -115,7 +115,7 @@ typedef PersistentIDObject inherited;
 
 public:
     AppUser(
-        int_fast32_t db_id,
+        int64_t db_id,
         MemoryModel* pmm,
         string str_username = "",
         string str_password = "",
@@ -140,7 +140,7 @@ public:
     // ~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=
     Car& addCar(Car* pcar);
     Car& addCarToMemory(Car* pcar);
-    CarIt findCar(int_fast32_t db_id);
+    CarIt findCar(int64_t db_id);
     bool removeCar(CarIt it);
     // ~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=~=
 
@@ -154,7 +154,7 @@ public:
     Cars cars_;
 
     virtual void assignNewDbIdAsNeeded() { if (db_id_ == -1) { ++au_max_db_id_; db_id_ = au_max_db_id_; setDirty(); } }
-    static int_fast64_t au_max_db_id_;
+    static int64_t au_max_db_id_;
 
 protected:
 
